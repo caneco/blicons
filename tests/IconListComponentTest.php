@@ -2,9 +2,7 @@
 
 namespace Caneco\Blicons;
 
-use Caneco\Blicons\TestCase;
 use Caneco\Blicons\Components\Icon;
-use Illuminate\Support\Facades\View;
 use Caneco\Blicons\Components\IconList;
 
 class IconListComponentTest extends TestCase
@@ -14,7 +12,7 @@ class IconListComponentTest extends TestCase
     {
         $compiled = $this->renderComponent(IconList::class, []);
 
-          $expected = <<<HTML
+        $expected = <<<HTML
 <svg hidden>
     <defs>
             </defs>

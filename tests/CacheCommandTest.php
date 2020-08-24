@@ -2,8 +2,6 @@
 
 namespace Caneco\Blicons;
 
-use Caneco\Blicons\TestCase;
-
 class CacheCommandTest extends TestCase
 {
     /** @test */
