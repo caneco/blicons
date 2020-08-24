@@ -1,38 +1,50 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace Caneco\Blicons;
 
+use Illuminate\Support\Str;
+use Caneco\Blicons\BliconsServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use Spatie\Skeleton\SkeletonServiceProvider;
 
-class TestCase extends Orchestra
+abstract class TestCase extends Orchestra
 {
     public function setUp(): void
     {
         parent::setUp();
-
-        $this->withFactories(__DIR__.'/database/factories');
     }
 
     protected function getPackageProviders($app)
     {
         return [
-            SkeletonServiceProvider::class,
+            BliconsServiceProvider::class,
         ];
     }
 
-    public function getEnvironmentSetUp($app)
+    protected function renderComponent(string $component, array $data = [])
     {
-        $app['config']->set('database.default', 'sqlite');
-        $app['config']->set('database.connections.sqlite', [
-            'driver' => 'sqlite',
-            'database' => ':memory:',
-            'prefix' => '',
-        ]);
+        [$data, $attributes] = $this->partitionDataAndAttributes($component, $data);
 
-        /*
-        include_once __DIR__.'/../database/migrations/create_skeleton_table.php.stub';
-        (new \CreatePackageTable())->up();
-        */
+        $component = $this->app->make($component, $data->all());
+
+        $component->withAttributes($attributes->all());
+
+        $view = $component->resolveView();
+
+        $view->with($component->data());
+
+        return trim($view->render());
+    }
+
+    protected function partitionDataAndAttributes($class, array $attributes)
+    {
+        $constructor = (new \ReflectionClass($class))->getConstructor();
+
+        $parameterNames = $constructor
+            ? collect($constructor->getParameters())->map->getName()->all()
+            : [];
+
+        return collect($attributes)->partition(function ($value, $key) use ($parameterNames) {
+            return in_array(Str::camel($key), $parameterNames);
+        });
     }
 }

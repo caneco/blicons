@@ -1,17 +1,13 @@
 {
-    "name": "spatie/:package_name",
-    "description": ":package_description",
-    "keywords": [
-        "spatie",
-        ":package_name"
-    ],
-    "homepage": "https://github.com/spatie/:package_name",
+    "name": "caneco/blicons",
+    "description": "A package to use your SVG icon sprite in your Laravel Blade views.",
+    "keywords": ["caneco", "blicons", "laravel", "blade", "icons", "svg"],
+    "homepage": "https://github.com/caneco/blicons",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
-            "homepage": "https://spatie.be",
+            "name": "Caneco",
+            "homepage": "https://caneco.dev",
             "role": "Developer"
         }
     ],
@@ -27,13 +23,16 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src"
-        }
+            "Caneco\\Blicons\\": "src"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
-        "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
-        }
+        "classmap": [
+            "tests"
+        ]
     },
     "scripts": {
         "psalm": "vendor/bin/psalm",
@@ -47,11 +46,8 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
-            ],
-            "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
-            }
+                "Caneco\\Blicons\\BliconsServiceProvider"
+            ]
         }
     },
     "minimum-stability": "dev",

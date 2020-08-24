@@ -1,0 +1,29 @@
+<?php
+
+return [
+
+    /*
+    |--------------------------------------------------------------------------
+    | Default Class
+    |--------------------------------------------------------------------------
+    |
+    | This config option allows you to define some classes
+    | which will be applied to all icons by default.
+    |
+    */
+
+    'class' => '',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Icon List Key
+    |--------------------------------------------------------------------------
+    |
+    | With this config option you can set the key
+    | of the shared global view variable.
+    |
+    */
+
+    'key' => '_BLICONS_LIST_',
+
+];
