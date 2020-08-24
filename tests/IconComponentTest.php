@@ -2,7 +2,6 @@
 
 namespace Caneco\Blicons;
 
-use Caneco\Blicons\TestCase;
 use Caneco\Blicons\Components\Icon;
 
 class IconComponentTest extends TestCase

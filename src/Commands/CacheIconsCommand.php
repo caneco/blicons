@@ -21,6 +21,7 @@ class CacheIconsCommand extends Command
                 foreach (simplexml_load_file($file)->children() as $node) {
                     $icon .= $node->asXML();
                 }
+
                 return [$name => $icon];
             });
 

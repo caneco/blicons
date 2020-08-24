@@ -3,7 +3,6 @@
 namespace Caneco\Blicons;
 
 use Illuminate\Support\Str;
-use Caneco\Blicons\BliconsServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
 abstract class TestCase extends Orchestra
