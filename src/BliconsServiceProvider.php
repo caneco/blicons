@@ -27,7 +27,7 @@ class BliconsServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ .'/../resources/views', 'blicons');
 
-        $this->loadViewComponentsAs(null, [
+        $this->loadViewComponentsAs('', [
             Icon::class,
             IconList::class,
         ]);
